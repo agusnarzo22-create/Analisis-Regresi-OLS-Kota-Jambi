@@ -53,8 +53,21 @@ menandakan IPM lebih ditentukan faktor lain di luar belanja modal layanan dasar.
 ## Versi Webapp
 
 Folder `docs/` berisi **dashboard statis** hasil analisis (satu berkas `index.html`, tanpa
-server maupun build step). Isinya: kartu ringkasan (N, R², F-statistik), persamaan regresi,
-tabel koefisien, empat grafik interaktif, dan kesimpulan.
+server maupun build step).
+
+**Fitur:**
+
+- **Pemilih kota interaktif** — centang kota yang ingin dianalisis (dilengkapi pencarian,
+  *Pilih Semua*, *Kosongkan*, dan *Balik Pilihan*). Seluruh angka, tabel, dan grafik
+  dihitung ulang **real-time di browser**.
+- Kartu ringkasan: jumlah observasi, R², Adj. R², F-statistik, jumlah variabel signifikan.
+- Persamaan regresi dan tabel koefisien (koefisien, std. error, t-stat, p-value, keputusan).
+- **5 grafik interaktif**: scatter pendidikan vs IPM, scatter kesehatan vs IPM, diagram batang
+  koefisien, tren rata-rata IPM tahunan, dan **grafik 3D bidang regresi** (*scatter3d* + *surface*).
+- Kesimpulan yang ikut diperbarui mengikuti hasil perhitungan.
+
+> Regresi di browser dihitung dengan *normal equations* dan telah diverifikasi identik
+> dengan output `statsmodels` (baik untuk seluruh 97 kota maupun subset kota).
 
 **Melihat secara lokal:** cukup buka `docs/index.html` di browser (klik dua kali).
 
@@ -70,10 +83,12 @@ tabel koefisien, empat grafik interaktif, dan kesimpulan.
 
 1. **Import library** — NumPy, Pandas, Statsmodels, Plotly.
 2. **Memuat data** — dataset panel 97 kota × 11 tahun.
-3. **Statistik deskriptif & korelasi**.
-4. **Estimasi regresi OLS** — output `summary()` dan tabel koefisien.
-5. **Visualisasi** — scatter + garis regresi, dan diagram batang koefisien.
-6. **Kesimpulan & interpretasi**.
+3. **Filter kota (opsional)** — isi variabel `KOTA_DIPILIH` untuk membatasi analisis pada
+   kota tertentu; kosongkan untuk memakai seluruh kota.
+4. **Statistik deskriptif & korelasi**.
+5. **Estimasi regresi OLS** — output `summary()` dan tabel koefisien.
+6. **Visualisasi** — scatter + garis regresi, diagram batang koefisien, dan **bidang regresi 3D**.
+7. **Kesimpulan & interpretasi**.
 
 ## Cara Menjalankan
 
