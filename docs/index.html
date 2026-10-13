@@ -201,7 +201,7 @@ function scatter(id, kunci, judul, garis, warna){
   const y = DATA.map(d => d.y);
   const teks = DATA.map(d => d.k + " (" + d.t + ")");
   Plotly.newPlot(id, [
-    {x:x, y:y, text:teks, type:"scattergl", mode:"markers",
+    {x:x, y:y, text:teks, type:"scatter", mode:"markers",
      marker:{color:warna, size:7, opacity:.45, line:{width:0}},
      hovertemplate:"<b>%{text}</b><br>" + judul.x + ": %{x:.2f}<br>IPM: %{y:.2f}<extra></extra>",
      name:"Kota"},
