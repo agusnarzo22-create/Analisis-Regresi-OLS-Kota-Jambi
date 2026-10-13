@@ -3,3 +3,6 @@ pandas>=2.0
 statsmodels>=0.14
 plotly>=5.18
 jupyter>=1.0
+# Opsional: dipakai untuk merender grafik 2D sebagai PNG agar tampil di GitHub.
+# Tidak tersedia di Google Colab — notebook otomatis beralih ke grafik interaktif.
+kaleido>=0.2
